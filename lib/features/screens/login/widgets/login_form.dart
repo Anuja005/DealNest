@@ -1,5 +1,6 @@
 import 'package:deal_nest/features/screens/password_configuration/forgot_password.dart';
 import 'package:deal_nest/features/screens/signup/signup.dart';
+import 'package:deal_nest/navigation_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -60,7 +61,8 @@ class MyLoginForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: Text(TTexts.signIn))),
+                    onPressed: () => Get.to(() => NavigationMenu()),
+                    child: Text(TTexts.signIn))),
             SizedBox(height: TSizes.spaceBtwItems),
 
             ///Create Account Button
