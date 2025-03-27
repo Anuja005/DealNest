@@ -1,0 +1,2 @@
+C:/Users/ANUJA/Documents/Flutter Projects/deal_nest/android/app/.cxx/Debug/71664r29/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/ANUJA/Documents/Flutter Projects/deal_nest/android/app/.cxx/Debug/71664r29/x86_64/CMakeFiles/rebuild_cache.dir
