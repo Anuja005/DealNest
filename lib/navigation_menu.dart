@@ -1,4 +1,4 @@
-import 'package:deal_nest/features/shop/screens/home/widgets/home.dart';
+import 'package:deal_nest/features/shop/screens/home/home.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
