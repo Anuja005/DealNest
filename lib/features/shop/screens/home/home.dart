@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
+import '../../../../common/widgets/layouts/grid_layout.dart';
+import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
 import '../../../../utils/constants/image_strings.dart';
 
@@ -53,11 +55,21 @@ class HomeScreen extends StatelessWidget {
             ///Body
             Padding(
               padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: MyPromoSlider(
-                banners: [
-                  TImages.promoBanner1,
-                  TImages.promoBanner2,
-                  TImages.promoBanner3
+              child: Column(
+                children: [
+                  ///Promo Slider
+                  MyPromoSlider(banners: [
+                    TImages.promoBanner1,
+                    TImages.promoBanner2,
+                    TImages.promoBanner3
+                  ]),
+                  SizedBox(height: TSizes.spaceBtwSections),
+
+                  ///Popular Products
+                  MyGridLayout(
+                    itemCount: 2,
+                    itemBuilder: (_, index) => MyProductCardVertical(),
+                  ),
                 ],
               ),
             ),
