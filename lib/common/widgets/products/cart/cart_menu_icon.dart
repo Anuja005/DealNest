@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
 class MyCartCounterIcon extends StatelessWidget {
   const MyCartCounterIcon({
@@ -26,15 +26,18 @@ class MyCartCounterIcon extends StatelessWidget {
             width: 18,
             height: 18,
             decoration: BoxDecoration(
-              color: TColors.black,
+              color: THelperFunctions.isDarkMode(context)
+                  ? Colors.white
+                  : Colors.black,
               borderRadius: BorderRadius.circular(100),
             ),
             child: Center(
                 child: Text('2',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .apply(color: TColors.white, fontSizeFactor: 0.8))),
+                    style: Theme.of(context).textTheme.labelLarge!.apply(
+                        color: THelperFunctions.isDarkMode(context)
+                            ? Colors.black
+                            : Colors.white,
+                        fontSizeFactor: 0.8))),
           ),
         ),
       ],
