@@ -11,6 +11,7 @@ import '../../../../features/shop/screens/home/widgets/rounded_container.dart';
 import '../../../../utils/constants/image_strings.dart';
 import '../../../styles/shadows.dart';
 import '../../icons/my_circular_icon.dart';
+import '../../texts/my_brand_title_text_with_verified_icon.dart';
 
 class MyProductCardVertical extends StatelessWidget {
   const MyProductCardVertical({super.key});
@@ -81,44 +82,49 @@ class MyProductCardVertical extends StatelessWidget {
                   MyProductTitleText(
                       title: 'Green Nike Air Shoes', smallSize: true),
                   SizedBox(height: TSizes.spaceBtwItems / 2),
-                  Row(
+
+                  ///Text
+                  Column(
                     children: [
-                      Text('Nike',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.labelMedium),
-                      SizedBox(width: TSizes.xs),
-                      Icon(Iconsax.verify5,
-                          color: TColors.primary, size: TSizes.iconXs),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      ///Price
-                      MyProductPriceText(
-                        price: '35.0',
+                      MyBrandTitleTextWithVerificationIcon(
+                        title: 'Nike',
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: TColors.dark,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(TSizes.cardRadiusMd),
-                            bottomRight:
-                                Radius.circular(TSizes.productImageRadius),
-                          ),
-                        ),
-                        child: SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
-                          child: Center(
-                              child: Icon(Iconsax.add, color: TColors.white)),
-                        ),
+                      Text(
+                        '256 products',
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.labelMedium,
                       ),
                     ],
                   ),
                 ],
               ),
+            ),
+            Spacer(),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ///Price area
+                Padding(
+                  padding: const EdgeInsets.only(left: TSizes.sm),
+                  child: MyProductPriceText(price: '35.0'),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: TColors.dark,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(TSizes.cardRadiusMd),
+                      bottomRight: Radius.circular(TSizes.productImageRadius),
+                    ),
+                  ),
+                  child: SizedBox(
+                    width: TSizes.iconLg * 1.2,
+                    height: TSizes.iconLg * 1.2,
+                    child:
+                        Center(child: Icon(Iconsax.add, color: TColors.white)),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
