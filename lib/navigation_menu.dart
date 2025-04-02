@@ -1,3 +1,4 @@
+import 'package:deal_nest/features/personalization/screens/settings/settings.dart';
 import 'package:deal_nest/features/shop/screens/home/home.dart';
 import 'package:deal_nest/features/shop/screens/wishlist/wishlist.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
@@ -47,6 +48,6 @@ class NavigationController extends GetxController {
     HomeScreen(),
     StoreScreen(),
     FavouriteScreen(),
-    Container(color: Colors.blue)
+    SettingsScreen(),
   ];
 }
