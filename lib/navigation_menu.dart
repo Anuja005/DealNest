@@ -1,4 +1,5 @@
 import 'package:deal_nest/features/shop/screens/home/home.dart';
+import 'package:deal_nest/features/shop/screens/wishlist/wishlist.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class NavigationController extends GetxController {
   final screens = [
     HomeScreen(),
     StoreScreen(),
-    Container(color: Colors.orange),
+    FavouriteScreen(),
     Container(color: Colors.blue)
   ];
 }

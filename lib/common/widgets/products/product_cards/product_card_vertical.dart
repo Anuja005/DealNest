@@ -76,31 +76,35 @@ class MyProductCardVertical extends StatelessWidget {
             ///Details
             Padding(
               padding: EdgeInsets.only(left: TSizes.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  MyProductTitleText(
-                      title: 'Green Nike Air Shoes', smallSize: true),
-                  SizedBox(height: TSizes.spaceBtwItems / 2),
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyProductTitleText(
+                        title: 'Green Nike Air Shoes', smallSize: true),
+                    SizedBox(height: TSizes.spaceBtwItems / 2),
 
-                  ///Text
-                  Column(
-                    children: [
-                      MyBrandTitleTextWithVerificationIcon(
-                        title: 'Nike',
-                      ),
-                      Text(
-                        '256 products',
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ],
-                  ),
-                ],
+                    ///Text
+                    Column(
+                      children: [
+                        MyBrandTitleTextWithVerificationIcon(
+                          title: 'Nike',
+                        ),
+                        Text(
+                          '25 products',
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
             Spacer(),
 
+            ///Price area
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -109,6 +113,8 @@ class MyProductCardVertical extends StatelessWidget {
                   padding: const EdgeInsets.only(left: TSizes.sm),
                   child: MyProductPriceText(price: '35.0'),
                 ),
+
+                ///Add to cart button
                 Container(
                   decoration: BoxDecoration(
                     color: TColors.dark,
