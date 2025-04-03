@@ -5,9 +5,11 @@ import 'package:deal_nest/common/widgets/texts/section_heading.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/layouts/list_tiles/user_profile_tile.dart';
+import '../profile/widgets/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -31,7 +33,8 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   ///User Profile Card
-                  MyUserProfileTile(),
+                  MyUserProfileTile(
+                      onPressed: () => Get.to(() => ProfileScreen())),
                   SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
