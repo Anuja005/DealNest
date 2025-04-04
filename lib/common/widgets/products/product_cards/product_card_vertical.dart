@@ -1,10 +1,12 @@
 import 'package:deal_nest/common/widgets/images/my_rounded_image.dart';
 import 'package:deal_nest/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:deal_nest/common/widgets/texts/product_title_text.dart';
+import 'package:deal_nest/features/shop/screens/product_details/product_detail.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../features/shop/screens/home/widgets/rounded_container.dart';
@@ -20,7 +22,7 @@ class MyProductCardVertical extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => ProductDetail()),
       child: Container(
         width: 180,
         padding: EdgeInsets.all(1),

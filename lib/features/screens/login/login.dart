@@ -3,7 +3,6 @@ import 'package:deal_nest/features/screens/login/widgets/login_form.dart';
 import 'package:deal_nest/features/screens/login/widgets/login_header.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:deal_nest/utils/constants/text_strings.dart';
-import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +14,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
