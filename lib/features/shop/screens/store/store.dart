@@ -26,9 +26,12 @@ class StoreScreen extends StatelessWidget {
           actions: [
             MyCartCounterIcon(
               onPressed: () {},
-              iconColor: Theme.of(context).brightness == Brightness.dark
+              iconColor: THelperFunctions.isDarkMode(context)
                   ? TColors.white
                   : TColors.black,
+              counterTextColor: THelperFunctions.isDarkMode(context)
+                  ? TColors.black
+                  : TColors.white,
             ),
           ],
         ),

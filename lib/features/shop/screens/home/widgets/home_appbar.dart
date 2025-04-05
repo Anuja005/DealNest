@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../../common/widgets/appbar/appbar.dart';
 
+import '../../../../../common/widgets/appbar/appbar.dart';
 import '../../../../../common/widgets/products/cart/cart_menu_icon.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
@@ -27,7 +27,13 @@ class MyHomeAppBar extends StatelessWidget {
                   .apply(color: TColors.white)),
         ],
       ),
-      actions: [MyCartCounterIcon(onPressed: () {}, iconColor: TColors.white)],
+      actions: [
+        MyCartCounterIcon(
+            onPressed: () {},
+            iconColor: TColors.white,
+            counterBgColor: TColors.black,
+            counterTextColor: TColors.white),
+      ],
     );
   }
 }
