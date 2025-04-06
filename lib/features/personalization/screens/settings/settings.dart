@@ -3,6 +3,7 @@ import 'package:deal_nest/common/widgets/custom_shapes/containers/primary_header
 import 'package:deal_nest/common/widgets/layouts/list_tiles/settings_menu_tile.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
 import 'package:deal_nest/features/personalization/screens/address/address.dart';
+import 'package:deal_nest/features/shop/screens/order/order.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
@@ -62,9 +63,11 @@ class SettingsScreen extends StatelessWidget {
                       title: 'My Cart',
                       subTitle: 'Add, remove products and move to checkout'),
                   MySettingsMenuTile(
-                      icon: Iconsax.bag_tick,
-                      title: 'My Orders',
-                      subTitle: 'In-progress and Completed Orders'),
+                    icon: Iconsax.bag_tick,
+                    title: 'My Orders',
+                    subTitle: 'In-progress and Completed Orders',
+                    onTap: () => Get.to(() => OrderScreen()),
+                  ),
                   MySettingsMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',
