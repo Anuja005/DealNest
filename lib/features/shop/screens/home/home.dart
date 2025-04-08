@@ -1,8 +1,10 @@
+import 'package:deal_nest/features/shop/screens/all_products/all_products.dart';
 import 'package:deal_nest/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:deal_nest/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:deal_nest/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/custom_shapes/containers/primary_header_container.dart';
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
@@ -68,7 +70,9 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Heading
-                  MySectionHeading(title: 'Popular Products', onPressed: () {}),
+                  MySectionHeading(
+                      title: 'Popular Products',
+                      onPressed: () => Get.to(() => AllProducts())),
                   SizedBox(height: TSizes.spaceBtwItems),
 
                   ///Popular Products
