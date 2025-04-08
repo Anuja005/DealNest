@@ -3,11 +3,13 @@ import 'package:deal_nest/common/widgets/custom_shapes/containers/search_contain
 import 'package:deal_nest/common/widgets/layouts/grid_layout.dart';
 import 'package:deal_nest/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
+import 'package:deal_nest/features/shop/screens/brand/all_brands.dart';
 import 'package:deal_nest/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../common/widgets/appbar/tabbar.dart';
 import '../../../../common/widgets/brand/brand_card.dart';
@@ -66,7 +68,7 @@ class StoreScreen extends StatelessWidget {
                       MySectionHeading(
                           title: 'Featured Brands',
                           showActionButton: true,
-                          onPressed: () {}),
+                          onPressed: () => Get.to(() => AllBrandsScreen())),
                       SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
                       ///Brands Grid
