@@ -3,6 +3,7 @@ import 'package:deal_nest/common/widgets/custom_shapes/containers/primary_header
 import 'package:deal_nest/common/widgets/layouts/list_tiles/settings_menu_tile.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
 import 'package:deal_nest/features/personalization/screens/address/address.dart';
+import 'package:deal_nest/features/shop/screens/cart/cart.dart';
 import 'package:deal_nest/features/shop/screens/order/order.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
@@ -59,9 +60,11 @@ class SettingsScreen extends StatelessWidget {
                     onTap: () => Get.to(() => UserAddressScreen()),
                   ),
                   MySettingsMenuTile(
-                      icon: Iconsax.shopping_cart,
-                      title: 'My Cart',
-                      subTitle: 'Add, remove products and move to checkout'),
+                    icon: Iconsax.shopping_cart,
+                    title: 'My Cart',
+                    subTitle: 'Add, remove products and move to checkout',
+                    onTap: () => Get.to(() => CartScreen()),
+                  ),
                   MySettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
