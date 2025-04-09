@@ -12,7 +12,20 @@
           "package_name": "lk.java.deal_nest"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "18285350649-ramoduv5gsqhmc1e3lguj85af2rdscmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "lk.java.deal_nest",
+            "certificate_hash": "abad3c24f9ea58f38122e3d6d54ec9a4b8b7b0b9"
+          }
+        },
+        {
+          "client_id": "18285350649-avoniub3tderk8gium3h4ats25hm4976.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyATQJqCYODL5r6s_JERydW3xAPEBYXFpfA"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18285350649-avoniub3tderk8gium3h4ats25hm4976.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "18285350649-ahk8p8pn6t1gq82f9vvmmcuvtqnu5c7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "lk.java.dealnest"
+              }
+            }
+          ]
         }
       }
     }

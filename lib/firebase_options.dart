@@ -69,6 +69,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '18285350649',
     projectId: 'dealnest-94f58',
     storageBucket: 'dealnest-94f58.firebasestorage.app',
+    androidClientId: '18285350649-ramoduv5gsqhmc1e3lguj85af2rdscmv.apps.googleusercontent.com',
+    iosClientId: '18285350649-ahk8p8pn6t1gq82f9vvmmcuvtqnu5c7d.apps.googleusercontent.com',
     iosBundleId: 'lk.java.dealnest',
   );
+
 }
