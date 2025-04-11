@@ -1,3 +1,6 @@
+import 'package:deal_nest/data/repositories/authentication/authentication_repository.dart';
+import 'package:deal_nest/data/repositories/user/user_repository.dart';
+import 'package:deal_nest/features/screens/signup/verify_email.dart';
 import 'package:deal_nest/utils/helpers/network_manager.dart';
 import 'package:deal_nest/utils/popups/full_screen_loader.dart';
 import 'package:deal_nest/utils/popups/loaders.dart';
@@ -5,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../utils/constants/image_strings.dart';
+import '../../../personalization/models/user_model.dart';
 
 class SignupController extends GetxController {
   static SignupController get instance => Get.find();
@@ -24,7 +28,7 @@ class SignupController extends GetxController {
       GlobalKey<FormState>(); // Form key for form validation
   ///Sign up
 
-  Future<void> signup() async {
+  void signup() async {
     try {
       //start loading
       TFullScreenLoader.openLoadingDialog(
@@ -32,11 +36,18 @@ class SignupController extends GetxController {
 
       //check internet connectivity
       final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
+      if (!isConnected) {
+        //Remove Loader
+        TFullScreenLoader.stopLoading();
+        return;
+      }
 
       //form validation
-      if (!signupFormKey.currentState!.validate()) return;
-
+      if (!signupFormKey.currentState!.validate()) {
+        //Remove Loader
+        TFullScreenLoader.stopLoading();
+        return;
+      }
       //privacy policy check
       if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
@@ -44,18 +55,45 @@ class SignupController extends GetxController {
           message:
               'In order to create account, you must have to read and accept the Privacy Policy & Terms of Use.',
         );
+        //Remove Loader
+        TFullScreenLoader.stopLoading();
         return;
       }
-      //register user in the firebase authentication & save user
+      //register user in the firebase authentication & save user in firebase
+      final userCredential = await AuthenticationRepository.instance
+          .registerWithEmailAndPassword(
+              email.text.trim(), password.text.trim());
+
       //save authenticated user data in Firebase FireStore
-      //show success message
-      //move to verify email screen
-    } catch (e) {
-      //Show some generic error to user
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
+      final newUser = UserModel(
+        id: userCredential.user!.uid,
+        firstName: firstName.text.trim(),
+        lastName: lastName.text.trim(),
+        username: username.text.trim(),
+        email: email.text.trim(),
+        phoneNumber: phoneNumber.text.trim(),
+        profilePicture: '',
+      );
+
+      final userRepository = Get.put(UserRepository());
+      await userRepository.saveUserRecord(newUser);
+
       //Remove Loader
       TFullScreenLoader.stopLoading();
+
+      //show success message
+      TLoaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your account has been created! Verify email to continue.');
+
+      //move to verify email screen
+      Get.to(() => VerifyEmailScreen());
+    } catch (e) {
+      //Remove Loader
+      TFullScreenLoader.stopLoading();
+
+      //Show some generic error to user
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
 }
