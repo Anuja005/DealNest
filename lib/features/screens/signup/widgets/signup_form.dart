@@ -94,16 +94,17 @@ class MySignupForm extends StatelessWidget {
               controller: controller.password,
               obscureText: controller.hidePassword.value,
               decoration: InputDecoration(
-                  labelText: TTexts.password,
-                  labelStyle: TextStyle(fontSize: 13),
-                  prefixIcon: Icon(Iconsax.password_check),
-                  suffixIcon: IconButton(
-                    onPressed: () => controller.hidePassword.value =
-                        !controller.hidePassword.value,
-                    icon: Icon(controller.hidePassword.value
-                        ? Iconsax.eye_slash
-                        : Iconsax.eye),
-                  )),
+                labelText: TTexts.password,
+                labelStyle: TextStyle(fontSize: 13),
+                prefixIcon: Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value =
+                      !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value
+                      ? Iconsax.eye_slash
+                      : Iconsax.eye),
+                ),
+              ),
             ),
           ),
           SizedBox(height: TSizes.spaceBtwSections),
