@@ -1,6 +1,8 @@
-import 'package:deal_nest/features/screens/password_configuration/reset_password.dart';
+import 'package:deal_nest/common/widgets/appbar/appbar.dart';
+import 'package:deal_nest/features/authentication/controllers/forget_password/forgot_password_controller.dart';
 import 'package:deal_nest/utils/constants/sizes.dart';
 import 'package:deal_nest/utils/constants/text_strings.dart';
+import 'package:deal_nest/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -10,8 +12,9 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
-      appBar: AppBar(),
+      appBar: MyAppBar(),
       body: Padding(
         padding: EdgeInsets.all(TSizes.defaultSpace),
         child: Column(
@@ -26,19 +29,25 @@ class ForgotPassword extends StatelessWidget {
             SizedBox(height: TSizes.spaceBtwSections * 2),
 
             ///Text Field
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: TTexts.email,
-                  prefixIcon: Icon(Iconsax.direct_right)),
+            Form(
+              key: controller.forgetPasswordFormKey,
+              child: TextFormField(
+                controller: controller.email,
+                validator: TValidator.validateEmail,
+                decoration: InputDecoration(
+                    labelText: TTexts.email,
+                    prefixIcon: Icon(Iconsax.direct_right)),
+              ),
             ),
             SizedBox(height: TSizes.spaceBtwSections),
 
             ///Submit Button
             SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () => Get.off(() => ResetPassword()),
-                    child: Text(TTexts.submit)))
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () => controller.sendPasswordResetEmail(),
+                  child: Text(TTexts.submit)),
+            ),
           ],
         ),
       ),
