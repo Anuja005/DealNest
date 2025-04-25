@@ -26,7 +26,7 @@ class MyProfileMenu extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Text('Name',
+              child: Text(title,
                   style: Theme.of(context).textTheme.bodySmall,
                   overflow: TextOverflow.ellipsis),
             ),

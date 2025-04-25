@@ -13,7 +13,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../../../../common/widgets/layouts/list_tiles/user_profile_tile.dart';
 import '../../../../data/repositories/authentication/authentication_repository.dart';
-import '../profile/widgets/profile.dart';
+import '../profile/profile.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
