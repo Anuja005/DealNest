@@ -1,5 +1,5 @@
 import 'package:deal_nest/common/widgets/appbar/appbar.dart';
-import 'package:deal_nest/common/widgets/images/my_circular_image.dart';
+import 'package:deal_nest/common/widgets/shimmer/shimmer.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
 import 'package:deal_nest/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:deal_nest/features/personalization/screens/profile/widgets/profile_menu.dart';
@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../common/widgets/images/my_circular_image.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -31,9 +32,20 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    MyCircularImage(image: TImages.user, width: 80, height: 80),
+                    Obx(() {
+                      final networkImage = controller.user.value.profilePicture;
+                      final image =
+                          networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value
+                          ? MyShimmerEffect(width: 80, height: 80, radius: 80)
+                          : MyCircularImage(
+                              image: image,
+                              width: 80,
+                              height: 80,
+                              isNetworkImage: networkImage.isNotEmpty);
+                    }),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: Text('Change Profile Picture')),
                   ],
                 ),
