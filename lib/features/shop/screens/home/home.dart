@@ -11,13 +11,13 @@ import '../../../../common/widgets/custom_shapes/containers/search_container.dar
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
-import '../../../../utils/constants/image_strings.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -58,15 +58,11 @@ class HomeScreen extends StatelessWidget {
 
             ///Body
             Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
+              padding: EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
                   ///Promo Slider
-                  MyPromoSlider(banners: [
-                    TImages.promoBanner1,
-                    TImages.promoBanner2,
-                    TImages.promoBanner3
-                  ]),
+                  MyPromoSlider(),
                   SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Heading
@@ -77,7 +73,7 @@ class HomeScreen extends StatelessWidget {
 
                   ///Popular Products
                   MyGridLayout(
-                      itemCount: 2,
+                      itemCount: 4,
                       itemBuilder: (_, index) => MyProductCardVertical()),
                 ],
               ),
