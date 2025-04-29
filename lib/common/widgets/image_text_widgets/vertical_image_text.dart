@@ -1,3 +1,4 @@
+import 'package:deal_nest/common/widgets/images/my_circular_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/constants/colors.dart';
@@ -12,11 +13,13 @@ class MyVerticalImageText extends StatelessWidget {
     this.textColor = TColors.white,
     this.backgroundColor,
     this.onTap,
+    this.isNetworkImage = true,
   });
 
   final String image, title;
   final Color textColor;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -29,21 +32,15 @@ class MyVerticalImageText extends StatelessWidget {
         child: Column(
           children: [
             ///Circular Icon
-            Container(
-              width: 56,
-              height: 56,
-              padding: EdgeInsets.all(TSizes.sm),
-              decoration: BoxDecoration(
-                color:
-                    backgroundColor ?? (dark ? TColors.black : TColors.white),
-                borderRadius: BorderRadius.circular(100),
-              ),
-              child: Center(
-                child: Image(
-                    image: AssetImage(image),
-                    fit: BoxFit.cover,
-                    color: dark ? TColors.light : TColors.dark),
-              ),
+            MyCircularImage(
+              image: image,
+              fit: BoxFit.fitWidth,
+              padding: TSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
+              backgroundColor: backgroundColor,
+              overlayColor: THelperFunctions.isDarkMode(context)
+                  ? TColors.light
+                  : TColors.dark,
             ),
 
             ///Text

@@ -3,6 +3,7 @@ import 'package:deal_nest/common/widgets/custom_shapes/containers/search_contain
 import 'package:deal_nest/common/widgets/layouts/grid_layout.dart';
 import 'package:deal_nest/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
+import 'package:deal_nest/features/shop/controllers/category_controller.dart';
 import 'package:deal_nest/features/shop/screens/brand/all_brands.dart';
 import 'package:deal_nest/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:deal_nest/utils/constants/colors.dart';
@@ -19,8 +20,10 @@ class StoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
+
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: MyAppBar(
           title:
@@ -85,26 +88,16 @@ class StoreScreen extends StatelessWidget {
 
                 ///Tabs
                 bottom: MyTabBar(
-                  tabs: [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furniture')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
-                ),
+                    tabs: categories
+                        .map((category) => Tab(child: Text(category.name)))
+                        .toList()),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              MyCategoryTab(),
-              MyCategoryTab(),
-              MyCategoryTab(),
-              MyCategoryTab(),
-              MyCategoryTab()
-            ],
-          ),
+              children: categories
+                  .map((category) => MyCategoryTab(category: category))
+                  .toList()),
         ),
       ),
     );

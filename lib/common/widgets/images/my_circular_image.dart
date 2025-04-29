@@ -53,9 +53,9 @@ class MyCircularImage extends StatelessWidget {
                 )
               : Image(
                   fit: fit,
-                  image: AssetImage(image) as ImageProvider,
+                  image: AssetImage(image),
                   color: overlayColor,
-                ), // Image
+                ),
         ),
       ),
     );
