@@ -1,4 +1,5 @@
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
+import 'package:deal_nest/features/shop/models/product_model.dart';
 import 'package:deal_nest/features/shop/screens/product_details/widgets/bottom_add_to_cart_widget.dart';
 import 'package:deal_nest/features/shop/screens/product_details/widgets/product_attributes.dart';
 import 'package:deal_nest/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
@@ -12,7 +13,9 @@ import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetail extends StatelessWidget {
-  const ProductDetail({super.key});
+  const ProductDetail({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

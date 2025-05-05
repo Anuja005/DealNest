@@ -10,14 +10,16 @@ import '../../../../common/widgets/custom_shapes/containers/primary_header_conta
 import '../../../../common/widgets/custom_shapes/containers/search_container.dart';
 import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
+import '../../../../common/widgets/shimmer/vertical_product_shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
+import '../../controllers/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(ProductController());
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -72,9 +74,21 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: TSizes.spaceBtwItems),
 
                   ///Popular Products
-                  MyGridLayout(
-                      itemCount: 4,
-                      itemBuilder: (_, index) => MyProductCardVertical()),
+                  Obx(() {
+                    if (controller.isLoading.value)
+                      return MyVerticalProductShimmer();
+
+                    if (controller.featuredProducts.isEmpty) {
+                      return Center(
+                          child: Text('No Data Found!',
+                              style: Theme.of(context).textTheme.bodyMedium));
+                    }
+                    return MyGridLayout(
+                      itemCount: controller.featuredProducts.length,
+                      itemBuilder: (_, index) => MyProductCardVertical(
+                          product: controller.featuredProducts[index]),
+                    );
+                  }),
                 ],
               ),
             ),

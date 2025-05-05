@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../models/product_model.dart';
+
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
@@ -22,16 +24,17 @@ class FavouriteScreen extends StatelessWidget {
               icon: Iconsax.add, onPressed: () => Get.to(HomeScreen())),
         ],
       ),
+
+      //Body
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace),
-          child: Column(
-            children: [
-              MyGridLayout(
-                  itemCount: 4,
-                  itemBuilder: (_, index) => MyProductCardVertical())
-            ],
-          ),
+
+          //Products Grid
+          child: MyGridLayout(
+              itemCount: 6,
+              itemBuilder: (_, index) =>
+                  MyProductCardVertical(product: ProductModel.empty())),
         ),
       ),
     );

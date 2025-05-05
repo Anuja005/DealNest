@@ -2,6 +2,7 @@ import 'package:deal_nest/common/widgets/layouts/grid_layout.dart';
 import 'package:deal_nest/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:deal_nest/common/widgets/texts/section_heading.dart';
 import 'package:deal_nest/features/shop/models/category_model.dart';
+import 'package:deal_nest/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../common/widgets/brand/brand_show_case.dart';
@@ -42,7 +43,8 @@ class MyCategoryTab extends StatelessWidget {
 
               MyGridLayout(
                   itemCount: 4,
-                  itemBuilder: (_, index) => MyProductCardVertical())
+                  itemBuilder: (_, index) =>
+                      MyProductCardVertical(product: ProductModel.empty())),
             ],
           ),
         ),
