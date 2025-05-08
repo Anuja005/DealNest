@@ -12,7 +12,7 @@ import '../../../../common/widgets/layouts/grid_layout.dart';
 import '../../../../common/widgets/products/product_cards/product_card_vertical.dart';
 import '../../../../common/widgets/shimmer/vertical_product_shimmer.dart';
 import '../../../../common/widgets/texts/section_heading.dart';
-import '../../controllers/product_controller.dart';
+import '../../controllers/product/product_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

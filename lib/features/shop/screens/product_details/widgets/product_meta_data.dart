@@ -2,8 +2,9 @@ import 'package:deal_nest/common/widgets/images/my_circular_image.dart';
 import 'package:deal_nest/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:deal_nest/common/widgets/texts/my_brand_title_text_with_verified_icon.dart';
 import 'package:deal_nest/common/widgets/texts/product_title_text.dart';
+import 'package:deal_nest/features/shop/controllers/product/product_controller.dart';
+import 'package:deal_nest/features/shop/models/product_model.dart';
 import 'package:deal_nest/utils/constants/enums.dart';
-import 'package:deal_nest/utils/constants/image_strings.dart';
 import 'package:deal_nest/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
@@ -12,10 +13,15 @@ import '../../../../../utils/constants/sizes.dart';
 import '../../home/widgets/rounded_container.dart';
 
 class MyProductMetaData extends StatelessWidget {
-  const MyProductMetaData({super.key});
+  const MyProductMetaData({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage =
+        controller.calculateSalePercentage(product.price, product.salePrice);
     final darkMode = THelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +35,7 @@ class MyProductMetaData extends StatelessWidget {
               backgroundColor: TColors.secondary.withOpacity(0.8),
               padding: EdgeInsets.symmetric(
                   horizontal: TSizes.sm, vertical: TSizes.xs),
-              child: Text('25%',
+              child: Text('$salePercentage%',
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge!
@@ -38,19 +44,24 @@ class MyProductMetaData extends StatelessWidget {
             SizedBox(width: TSizes.spaceBtwItems),
 
             ///Price
-            Text('\$250',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleSmall!
-                    .apply(decoration: TextDecoration.lineThrough)),
-            SizedBox(width: TSizes.spaceBtwItems),
-            MyProductPriceText(price: '175', isLarge: true),
+            if (product.productType == ProductType.single.toString() &&
+                product.salePrice > 0)
+              Text('\$${product.price}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleSmall!
+                      .apply(decoration: TextDecoration.lineThrough)),
+            if (product.productType == ProductType.single.toString() &&
+                product.salePrice > 0)
+              SizedBox(width: TSizes.spaceBtwItems),
+            MyProductPriceText(
+                price: controller.getProductPrice(product), isLarge: true),
           ],
         ),
         SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         ///Title
-        MyProductTitleText(title: 'Green Nike Sports Shirts'),
+        MyProductTitleText(title: product.title),
         SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         ///Stack Status
@@ -58,23 +69,26 @@ class MyProductMetaData extends StatelessWidget {
           children: [
             MyProductTitleText(title: 'Status'),
             SizedBox(width: TSizes.spaceBtwItems),
-            Text('In Stock', style: Theme.of(context).textTheme.titleMedium),
+            Text(controller.getProductStockStatus(product.stock),
+                style: Theme.of(context).textTheme.titleMedium),
           ],
         ),
-
         SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
         ///Brand
         Row(
           children: [
             MyCircularImage(
-              image: TImages.shoeIcon,
+              image: product.brand?.image ?? '',
               width: 32,
               height: 32,
               overlayColor: darkMode ? TColors.white : TColors.black,
+              isNetworkImage: true,
             ),
             MyBrandTitleTextWithVerificationIcon(
-                title: 'Nike', brandTextSize: TextSizes.medium),
+              title: product.brand?.name ?? '',
+              brandTextSize: TextSizes.medium,
+            ),
           ],
         ),
       ],

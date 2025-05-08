@@ -49,8 +49,6 @@ class TFirebaseAuthException implements Exception {
         return 'The action code is missing. Please provide a valid action code.';
       case 'user-token-expired':
         return 'The user\'s token has expired, and authentication is required. Please sign in again.';
-      case 'user-not-found':
-        return 'No user found for the given email or UID.';
       case 'invalid-credential':
         return 'The supplied credential is malformed or has expired.';
       case 'wrong-password':

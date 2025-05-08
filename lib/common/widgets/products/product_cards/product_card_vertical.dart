@@ -1,7 +1,7 @@
 import 'package:deal_nest/common/widgets/images/my_rounded_image.dart';
 import 'package:deal_nest/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:deal_nest/common/widgets/texts/product_title_text.dart';
-import 'package:deal_nest/features/shop/controllers/product_controller.dart';
+import 'package:deal_nest/features/shop/controllers/product/product_controller.dart';
 import 'package:deal_nest/features/shop/models/product_model.dart';
 import 'package:deal_nest/features/shop/screens/product_details/product_detail.dart';
 import 'package:deal_nest/utils/constants/colors.dart';

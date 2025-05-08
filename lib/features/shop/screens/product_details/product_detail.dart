@@ -12,6 +12,8 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 
+import '../../../../utils/constants/enums.dart';
+
 class ProductDetail extends StatelessWidget {
   const ProductDetail({super.key, required this.product});
 
@@ -25,7 +27,7 @@ class ProductDetail extends StatelessWidget {
         child: Column(
           children: [
             /// 1 - Product Image Slider
-            MyProductImageSlider(),
+            MyProductImageSlider(product: product),
 
             /// 2 - Product Details
             Padding(
@@ -39,11 +41,13 @@ class ProductDetail extends StatelessWidget {
                   MyRatingAndShare(),
 
                   ///Price, Title, Stock & Brand
-                  MyProductMetaData(),
+                  MyProductMetaData(product: product),
 
-                  ///Attractive
-                  MyProductAttributes(),
-                  SizedBox(height: TSizes.spaceBtwSections),
+                  ///Attributes
+                  if (product.productType == ProductType.variable.toString())
+                    MyProductAttributes(product: product),
+                  if (product.productType == ProductType.variable.toString())
+                    SizedBox(height: TSizes.spaceBtwSections),
 
                   ///Checkout Button
                   SizedBox(
@@ -57,7 +61,7 @@ class ProductDetail extends StatelessWidget {
                       title: 'Description', showActionButton: false),
                   SizedBox(height: TSizes.spaceBtwItems),
                   ReadMoreText(
-                    'This is a Product description for Blue Nike Sleeve less vest.This is a Product description for Blue Nike Sleeve less vest.This is a Product description for Blue Nike Sleeve less vest',
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: ' Show more',
