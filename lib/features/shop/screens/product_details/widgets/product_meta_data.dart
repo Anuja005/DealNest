@@ -64,7 +64,7 @@ class MyProductMetaData extends StatelessWidget {
         MyProductTitleText(title: product.title),
         SizedBox(height: TSizes.spaceBtwItems / 1.5),
 
-        ///Stack Status
+        ///Stock Status
         Row(
           children: [
             MyProductTitleText(title: 'Status'),
