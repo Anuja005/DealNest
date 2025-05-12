@@ -20,7 +20,7 @@ class BrandProducts extends StatelessWidget {
               MyBrandCard(showBorder: true),
               SizedBox(height: TSizes.spaceBtwSections),
 
-              MySortableProducts(),
+              MySortableProducts(products: []),
             ],
           ),
         ),

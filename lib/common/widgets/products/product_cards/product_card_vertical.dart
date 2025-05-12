@@ -99,7 +99,7 @@ class MyProductCardVertical extends StatelessWidget {
                     MyProductTitleText(title: product.title, smallSize: true),
                     SizedBox(height: TSizes.spaceBtwItems / 2),
                     MyBrandTitleTextWithVerificationIcon(
-                        title: product.brand!.name),
+                        title: product.brand?.name ?? 'Unknown Brand'),
                   ],
                 ),
               ),
