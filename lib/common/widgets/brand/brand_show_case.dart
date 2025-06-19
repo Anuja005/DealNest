@@ -1,3 +1,4 @@
+import 'package:deal_nest/features/shop/models/brand_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/shop/screens/home/widgets/rounded_container.dart';
@@ -25,7 +26,7 @@ class MyBrandShowcase extends StatelessWidget {
       child: Column(
         children: [
           ///Brand with Products Count
-          MyBrandCard(showBorder: false),
+          MyBrandCard(showBorder: false, brand: BrandModel.empty()),
           SizedBox(height: TSizes.spaceBtwItems),
 
           ///Brand Top 3 Product Images

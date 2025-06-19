@@ -58,21 +58,22 @@ class MyProductCardVertical extends StatelessWidget {
                   ),
 
                   ///Sale Tag
-                  Positioned(
-                    top: 12,
-                    left: 2,
-                    child: MyRoundedContainer(
-                      radius: TSizes.sm,
-                      backgroundColor: TColors.secondary.withOpacity(0.8),
-                      padding: EdgeInsets.symmetric(
-                          horizontal: TSizes.sm, vertical: TSizes.xs),
-                      child: Text('$salePercentage%',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge!
-                              .apply(color: TColors.black)),
+                  if (salePercentage != null)
+                    Positioned(
+                      top: 12,
+                      left: 2,
+                      child: MyRoundedContainer(
+                        radius: TSizes.sm,
+                        backgroundColor: TColors.secondary.withOpacity(0.8),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: TSizes.sm, vertical: TSizes.xs),
+                        child: Text('$salePercentage%',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .apply(color: TColors.black)),
+                      ),
                     ),
-                  ),
 
                   ///Favourite Button
                   Positioned(
